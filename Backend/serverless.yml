@@ -1,0 +1,30 @@
+service: ecommerce-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  memorySize: 1024
+  timeout: 30
+  environment:
+    NODE_ENV: production
+    DATABASE_URL: ${env:DATABASE_URL}
+    JWT_SECRET: ${env:JWT_SECRET}
+    JWT_EXPIRES_IN: ${env:JWT_EXPIRES_IN}
+    FRONTEND_URL: ${env:FRONTEND_URL}
+
+package:
+  exclude:
+    - node_modules/**
+    - .env
+    - .env.local
+    - serverless.yml
+    - README.md
+
+functions:
+  app:
+    handler: lambda.handler
+    events:
+      - httpApi:
+          path: /{any+}
+          method: ANY
