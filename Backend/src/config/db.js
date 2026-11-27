@@ -33,8 +33,4 @@ async function end() {
   }
 }
 
-function reset() {
-  sql = null;
-}
-
-module.exports = { getSql, end, reset };
+module.exports = { getSql, end };
