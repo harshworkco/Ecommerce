@@ -21,7 +21,7 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch(`${process.env.API_URL || "http://localhost:5000"}/api/auth/login`, {
+      const res = await fetch(`https://ecommerce-one-iota-15.vercel.app/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
